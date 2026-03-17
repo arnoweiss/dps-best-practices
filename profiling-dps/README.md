@@ -19,11 +19,21 @@ but referable by multiple Transfer Types.
 
 ```json
 {
-  "type": "https://w3id.org/idsa/v4.1/HTTP",
-  "endpoint": "http://dataplane.provider.com/api/public",
-  "authType": "bearer",
+  "@type": "DataAddress",
   "endpointType": "https://w3id.org/idsa/v4.1/HTTP",
-  "authorization": "<AUTH_TOKEN>"
+  "endpoint": "https://example.com",
+  "endpointProperties": [
+    {
+      "@type": "EndpointProperty",
+      "name": "authorization",
+      "value": "TOKEN-123"
+    },
+    {
+      "@type": "EndpointProperty",
+      "name": "authType",
+      "value": "bearer"
+    }
+  ]
 }
 ```
 
@@ -50,4 +60,6 @@ relevant base schemas from the DPS specification.
 
 ### Relationship to Dataspace Protocol and its Profiles
 
-
+The DSP is extensible in multiple dimensions. The extensions for [`Data Transfer`](https://github.com/eclipse-dataspace-protocol-base/BestPractices/tree/main/profiling/data-transfer-profiles#dataaddress) 
+inherit the `DataAddress` object from the DPS profile definitions. JSON schema definitions for DSP should point to
+object definitions governed by profiles of DPS. 
